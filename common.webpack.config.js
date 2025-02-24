@@ -73,45 +73,7 @@ const webpackConfig = (sampleAppDir, env, babelConfig) => {
       port: 3000,
       hot: true,
       open: true,
-      static: { directory: path.resolve(sampleAppDir, 'public') },
-      proxy: [
-        {
-          path: '/token',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/refreshToken/*',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/isValidThread/*',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/createThread',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/userConfig/*',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/getEndpointUrl',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/addUser/*',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/createRoom',
-          target: 'http://[::1]:8080'
-        },
-        {
-          path: '/addUserToRoom',
-          target: 'http://[::1]:8080'
-        }
-      ]
+      static: { directory: path.resolve(sampleAppDir, 'public') }
     }
   };
 
