@@ -73,7 +73,45 @@ const webpackConfig = (sampleAppDir, env, babelConfig) => {
       port: 3000,
       hot: true,
       open: true,
-      static: { directory: path.resolve(sampleAppDir, 'public') }
+      static: { directory: path.resolve(sampleAppDir, 'public') },
+      proxy: [
+        {
+          path: '/token',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/refreshToken/*',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/isValidThread/*',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/createThread',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/userConfig/*',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/getEndpointUrl',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/addUser/*',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/createRoom',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        },
+        {
+          path: '/addUserToRoom',
+          target: 'https://communication-services-web-calli-production.up.railway.app'
+        }
+      ]
     }
   };
 
