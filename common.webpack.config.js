@@ -74,44 +74,55 @@ const webpackConfig = (sampleAppDir, env, babelConfig) => {
       hot: true,
       open: true,
       static: { directory: path.resolve(sampleAppDir, 'public') },
-      proxy: [
-        {
-          path: '/token',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/refreshToken/*',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/isValidThread/*',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/createThread',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/userConfig/*',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/getEndpointUrl',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/addUser/*',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/createRoom',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
-        },
-        {
-          path: '/addUserToRoom',
-          target: 'https://communication-services-web-calli-production.up.railway.app'
+      ...(env.development && {
+        devServer: {
+          port: process.env.PORT || 3000,
+          hot: true,
+          open: true,
+          historyApiFallback: true,
+          static: {
+            directory: path.resolve(sampleAppDir, 'public')
+          },
+          proxy: [
+            {
+              path: '/token',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/refreshToken/*',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/isValidThread/*',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/createThread',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/userConfig/*',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/getEndpointUrl',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/addUser/*',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/createRoom',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            },
+            {
+              path: '/addUserToRoom',
+              target: 'https://communication-services-web-calli-production.up.railway.app'
+            }
+          ]
         }
-      ]
+      })
     }
   };
 
